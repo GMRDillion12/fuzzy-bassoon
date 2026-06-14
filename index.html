@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIT EMPRESA ESPAÑOLA DE TRADING DE INVERSIONES</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================
+           1. ROOT VARIABLES & CORE STYLES (Mature Palette)
+           ========================================== */
+        :root {
+            --bg-primary: #0a0f1d;
+            --bg-secondary: #111827;
+            --bg-tertiary: #1f2937;
+            --accent-gold: #d4af37;
+            --accent-gold-hover: #f3cf55;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --crypto-green: #10b981;
+            --crypto-red: #ef4444;
+            --border-color: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        /* ==========================================
+           2. NAVIGATION & LOGO
+           ========================================== */
+        header {
+            background-color: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .brand-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--text-main);
+            text-transform: uppercase;
+        }
+
+        .brand-name span {
+            color: var(--accent-gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-gold);
+        }
+
+        .cta-nav-btn {
+            background: linear-gradient(135deg, var(--accent-gold), #b3922e);
+            color: #000 !important;
+            padding: 8px 18px;
+            border-radius: 4px;
+            font-weight: 600 !important;
+        }
+
+        /* ==========================================
+           3. LIVE TICKER BANNER
+           ========================================== */
+        .ticker-wrap {
+            margin-top: 76px;
+            width: 100%;
+            overflow: hidden;
+            background: #1f2937;
+            border-bottom: 1px solid var(--border-color);
+            padding: 10px 0;
+        }
+
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-block;
+            padding: 0 2rem;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .ticker-item span.up { color: var(--crypto-green); }
+        .ticker-item span.down { color: var(--crypto-red); }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* ==========================================
+           4. HERO SECTION
+           ========================================== */
+        .hero {
+            padding: 100px 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .hero-left h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-left h1 span {
+            color: var(--accent-gold);
+        }
+
+        .hero-left p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-tertiary);
+        }
+
+        /* Live Technical Market Widget Simulated Box */
+        .hero-right .mock-chart-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            position: relative;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .chart-tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chart-tab {
+            background: var(--bg-tertiary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .chart-tab.active {
+            background: var(--accent-gold);
+            color: #000;
+        }
+
+        .mock-graph {
+            height: 250px;
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            padding-top: 20px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .bar {
+            flex: 1;
+            background: var(--crypto-green);
+            opacity: 0.7;
+            border-radius: 2px 2px 0 0;
+            transition: height 0.5s ease;
+        }
+
+        /* ==========================================
+           5. MULTIPLE LINK MODULE (Dynamic Matrix Options)
+           ========================================== */
+        .matrix-section {
+            background: var(--bg-secondary);
+            padding: 80px 25px;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2 span {
+            color: var(--accent-gold);
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .grid-buttons-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .routing-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+        }
+
+        .routing-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        .routing-card i {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .routing-card h4 {
+            color: var(--text-main);
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .routing-card p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ==========================================
+           6. INFORMATION PROCESS SECTION (Pictures 1 & 2)
+           ========================================== */
+        .process-section {
+            padding: 80px 25px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .process-flow {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .process-box {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .process-img-placeholder {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-tertiary);
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed var(--border-color);
+            overflow: hidden;
+        }
+
+        .process-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .process-box h3 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* ==========================================
+           7. INSTRUMENTS & TOOLS SECTION
+           ========================================== */
+        .tools-section {
+            background: #0d1424;
+            padding: 80px 25px;
+        }
+
+        .tools-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .tool-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 6px;
+        }
+
+        .tool-card .icon-wrapper {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .tool-card .icon-wrapper i {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+        }
+
+        /* ==========================================
+           8. AGENTS DIRECTORY SECTION
+           ========================================== */
+        .agents-section {
+            padding: 80px 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .agent-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .agent-card:hover {
+            border-color: var(--accent-gold);
+        }
+
+        .agent-img-frame {
+            width: 130px;
+            height: 130px;
+            margin: 30px auto 20px auto;
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            overflow: hidden;
+            background: var(--bg-tertiary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .agent-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .agent-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .agent-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--crypto-green);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .agent-links {
+            background: var(--bg-tertiary);
+            padding: 15px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tg-link {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .tg-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ==========================================
+           9. DIRECT MESSAGE ACTION FOOTER BANNER
+           ========================================== */
+        .action-banner {
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 60px 25px;
+            text-align: center;
+            border-top: 1px solid var(--accent-gold);
+        }
+
+        .action-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .action-container h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .action-container p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .direct-links-flex {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .direct-tg-btn {
+            background: #229ED9;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .direct-tg-btn:hover {
+            background: #1e87b8;
+        }
+
+        /* ==========================================
+           10. FOOTER
+           ========================================== */
+        footer {
+            background: #070a13;
+            padding: 40px 25px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="tee.png.png" alt="Logo BIT" class="logo-img" onerror="this.src='https://via.placeholder.com/45/d4af37/000000?text=BIT'">
+                <div class="brand-name">BIT <span>Trading/GRX</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#proceso">Proceso</a></li>
+                    <li><a href="#instrumentos">Instrumentos</a></li>
+                    <li><a href="#agentes">Agentes</a></li>
+                    <li><a href="#contacto" class="cta-nav-btn">Invertir Ahora</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item">BTC/USD: <span class="up">$64,231.50 (+2.4%)</span></div>
+            <div class="ticker-item">ETH/USD: <span class="up">$3,450.25 (+1.8%)</span></div>
+            <div class="ticker-item">EUR/USD: <span class="down">1.0842 (-0.12%)</span></div>
+            <div class="ticker-item">IBEX 35: <span class="up">11,120.40 (+0.85%)</span></div>
+            <div class="ticker-item">GOLD: <span class="up">$2,342.10 (+0.45%)</span></div>
+            <div class="ticker-item">BTC/USD: <span class="up">$64,231.50 (+2.4%)</span></div>
+            <div class="ticker-item">ETH/USD: <span class="up">$3,450.25 (+1.8%)</span></div>
+            <div class="ticker-item">EUR/USD: <span class="down">1.0842 (-0.12%)</span></div>
+        </div>
+    </div>
+
+    <section class="hero" id="inicio">
+        <div class="hero-left">
+            <h1>Comience su Inversión Hoy con <span>Garantía Absoluta</span></h1>
+            <p>Disfrute de rendimientos consistentes diariamente con acceso sin restricciones a su cuenta y un sistema de retiro/pago 100% seguro y accesible. Potenciado por herramientas profesionales avanzadas.</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn btn-primary">Comenzar a Ganar</a>
+                <a href="#proceso" class="btn btn-secondary">Ver Proceso</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="mock-chart-card">
+                <div class="chart-header">
+                    <div>
+                        <h4 style="margin-bottom: 2px;">Gráfico de Rendimiento Real-Time</h4>
+                        <span style="font-size:0.75rem; color:var(--crypto-green);"><i class="fa-solid fa-circle"></i> Servidor BIT Conectado</span>
+                    </div>
+                    <div class="chart-tabs">
+                        <span class="chart-tab active">1D</span>
+                        <span class="chart-tab">1W</span>
+                        <span class="chart-tab">1M</span>
+                    </div>
+                </div>
+                <div class="mock-graph" id="live-graph">
+                    <div class="bar" style="height: 40%"></div>
+                    <div class="bar" style="height: 55%"></div>
+                    <div class="bar" style="height: 48%"></div>
+                    <div class="bar" style="height: 70%"></div>
+                    <div class="bar" style="height: 85%"></div>
+                    <div class="bar" style="height: 60%"></div>
+                    <div class="bar" style="height: 75%"></div>
+                    <div class="bar" style="height: 90%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="matrix-section">
+        <div class="section-title">
+            <h2>Módulos Globales de la <span>Plataforma</span></h2>
+            <p>Acceda de forma rápida a todas las divisiones operacionales y páginas avanzadas del ecosistema de inversión.</p>
+        </div>
+        <div class="grid-buttons-container">
+            <a href="#proceso" class="routing-card">
+                <i class="fa-solid fa-gears"></i>
+                <h4>Proceso de Datos</h4>
+                <p>Infografía de operaciones internas</p>
+            </a>
+            <a href="#instrumentos" class="routing-card">
+                <i class="fa-solid fa-chart-line"></i>
+                <h4>Instrumentos</h4>
+                <p>Análisis de volatilidad y activos</p>
+            </a>
+            <a href="#agentes" class="routing-card">
+                <i class="fa-solid fa-user-tie"></i>
+                <h4>Mesa de Agentes</h4>
+                <p>Contacto con asesores asignados</p>
+            </a>
+            <a href="#alertas" class="routing-card" onclick="alert('Abriendo Panel de Alertas de Volatilidad...')">
+                <i class="fa-solid fa-bell"></i>
+                <h4>Alertas de Mercado</h4>
+                <p>Configuración de volatilidad instantánea</p>
+            </a>
+            <a href="#filtros" class="routing-card" onclick="alert('Cargando Filtro Avanzado de Acciones y Stocks...')">
+                <i class="fa-solid fa-filter"></i>
+                <h4>Filtro de Acciones</h4>
+                <p>Screening de renta variable global</p>
+            </a>
+            <a href="#calendario" class="routing-card" onclick="alert('Abriendo Calendario Económico de Dividendos...')">
+                <i class="fa-solid fa-calendar-days"></i>
+                <h4>Calendario Macroeconómico</h4>
+                <p>Fechas clave e impactos estimados</p>
+            </a>
+            <a href="#boletines" class="routing-card" onclick="alert('Cargando último Newsletter de Estrategias Corporativas...')">
+                <i class="fa-solid fa-newspaper"></i>
+                <h4>Boletines Informativos</h4>
+                <p>Análisis técnico diario exclusivo</p>
+            </a>
+            <a href="#seguridad" class="routing-card" onclick="alert('Verificando Encriptación SSL de Pasarela de Pagos...')">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>Seguridad de Retiros</h4>
+                <p>Validación de pasarela 100% segura</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="process-section" id="proceso">
+        <div class="section-title">
+            <h2>Procesamiento e <span>Infraestructura Funcional</span></h2>
+            <p>Conozca detalladamente la arquitectura técnica mediante la cual procesamos sus capitales para generar retornos.</p>
+        </div>
+        <div class="process-flow">
+            <div class="process-box">
+                <div class="process-img-placeholder">
+                    <img src="process1.png" alt="Información de Procesos Fase 1" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80'">
+                </div>
+                <h3><i class="fa-solid fa-circle-1"></i> Fase de Captación e Inteligencia</h3>
+                <p>Análisis algorítmico y posicionamiento estratégico en ventanas de liquidez institucional instantánea.</p>
+            </div>
+            <div class="process-box">
+                <div class="process-img-placeholder">
+                    <img src="process2.png" alt="Información de Procesos Fase 2" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80'">
+                </div>
+                <h3><i class="fa-solid fa-circle-2"></i> Fase de Ejecución y Distribución</h3>
+                <p>Liquidación automatizada de las ganancias diarias directo a los balances de cuentas accesibles del inversor.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tools-section" id="instrumentos">
+        <div class="section-title">
+            <h2>Herramientas y <span>Estrategias de Élite</span></h2>
+            <p>Soportamos sus operaciones con la suite analítica más robusta del mercado bursátil europeo.</p>
+        </div>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <h3>Alertas de Volatilidad</h3>
+                <p>Notificaciones automatizadas en tiempo real ante variaciones macroeconómicas de alto impacto.</p>
+            </div>
+            <div class="tool-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-arrow-rotate-right"></i></div>
+                <h3>Actualizaciones de Mercado</h3>
+                <p>Información continua directa desde las principales bolsas del mundo para mantener su portafolio optimizado.</p>
+            </div>
+            <div class="tool-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <h3>Filtro Avanzado de Acciones</h3>
+                <p>Herramienta analítica de segregación algorítmica para encontrar activos subvaluados con alto potencial.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="agents-section" id="agentes">
+        <div class="section-title">
+            <h2>Mesa de Gestión: <span>Agentes Certificados</span></h2>
+            <p>Nuestras asesoras asignadas se encuentran disponibles para coordinar su plan de trading y activar su rentabilidad diaria.</p>
+        </div>
+        <div class="agents-grid">
+            
+            <div class="agent-card">
+                <div class="agent-img-frame">
+                    <img src="raquel.png.jpeg" alt="Agente Raquel" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80'">
+                </div>
+                <div class="agent-info">
+                    <h3>RAQUEL</h3>
+                    <span class="agent-badge">Asesora Senior de Trading</span>
+                    <p style="padding: 0 20px; font-size: 0.85rem; color: var(--text-muted);">Especialista en gestión de cuentas preferenciales y optimización de flujos de capitales.</p>
+                    <div class="agent-links">
+                        <a href="https://t.me/Raquel0876" target="_blank" class="tg-link"><i class="fa-brands fa-telegram"></i> @Raquel0876</a>
+                        <a href="https://t.me/Rauel08756" target="_blank" class="tg-link" style="font-size:0.8rem; color:var(--text-muted);"><i class="fa-brands fa-telegram"></i> Canal Alternativo: @Rauel08756</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-img-frame">
+                    <img src="rose.jpg.jpeg" alt="Agente Rose" onerror="this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80'">
+                </div>
+                <div class="agent-info">
+                    <h3>ROSE</h3>
+                    <span class="agent-badge">Mesa de Operaciones y Soporte</span>
+                    <p style="padding: 0 20px; font-size: 0.85rem; color: var(--text-muted);">Encargada de validación de depósitos inmediatos, pasarelas y control de retiros garantizados.</p>
+                    <div class="agent-links">
+                        <a href="https://t.me/rose3302" target="_blank" class="tg-link"><i class="fa-brands fa-telegram"></i> @rose3302</a>
+                        <a href="https://t.me/Rose3302" target="_blank" class="tg-link" style="font-size:0.8rem; color:var(--text-muted);"><i class="fa-brands fa-telegram"></i> ID Alternativo: @Rose3302</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="action-banner" id="contacto">
+        <div class="action-container">
+            <h2>Inicie su Operación con Nosotros Hoy</h2>
+            <p style="color: #fff; font-weight: 500; font-size: 1.1rem; margin-bottom: 25px;">
+                Haga clic en cualquiera de las cuentas oficiales de Telegram que figuran abajo para enviar un mensaje directo y comenzar a recibir sus ingresos diarios garantizados.
+            </p>
+            <div class="direct-links-flex">
+                <a href="https://t.me/Raquel0876" target="_blank" class="direct-tg-btn">
+                    <i class="fa-brands fa-telegram"></i> Chat con Raquel (@Raquel0876)
+                </a>
+                <a href="https://t.me/rose3302" target="_blank" class="direct-tg-btn" style="background-color: #2ca5e0;">
+                    <i class="fa-brands fa-telegram"></i> Chat con Rose (@rose3302)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="max-width: 1200px; margin: 0 auto;">
+            <p>&copy; 2018BIT EMPRESA ESPAÑOLA DE TRADING DE INVERSIONES. Todos los derechos reservados. Seguridad de fondos garantizada mediante regulaciones vigentes de cifrado avanzado.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Real-Time Graphic Pulse simulation to provide a mature, functional vibe
+        function refreshMockGraph() {
+            const bars = document.querySelectorAll('#live-graph .bar');
+            bars.forEach(bar => {
+                // Creates smooth variations in the layout to resemble actual live trading updates
+                const variance = Math.floor(Math.random() * 65) + 30; 
+                bar.style.height = variance + '%';
+                
+                // Color variation depending on performance
+                if(variance > 60) {
+                    bar.style.background = 'var(--crypto-green)';
+                } else if(variance < 40) {
+                    bar.style.background = 'var(--crypto-red)';
+                } else {
+                    bar.style.background = 'var(--accent-gold)';
+                }
+            });
+        }
+
+        // Initialize ticking updates every 1.8 seconds
+        setInterval(refreshMockGraph, 1800);
+
+        // Interactive Header highlight logic
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
